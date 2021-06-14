@@ -36,9 +36,24 @@ function addGeocoderEvent() {
 }
 
 function addMarkerEvent() {
-    map.on('click', function (event) {
+    map.on('click',  function (event) {
         marker.setLngLat(event.lngLat)
-        console.log(event.lngLat)
-        fetchForecast([event.lngLat.lng, event.lngLat.lat])
+        // console.log(event.lngLat)
+        // console.log(event)
+
+        console.log('Fetching Forecast');
+        fetchForecast([event.lngLat.lng, event.lngLat.lat]);
     })
 }
+
+async function reverseGeocode(lng, lat) {
+    return $.ajax(`https://api.mapbox.com/geocoding/v5/mapbox.places/${lng},${lat}.json?access_token=${MAPBOX_TOKEN}`)
+        .done(function (data) {
+            return data;
+            console.log(data);
+        }).fail(function (error) {
+            console.log(error);
+        })
+}
+
+

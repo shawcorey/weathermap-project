@@ -1,0 +1,10 @@
+#forecast-container{
+    display: flex;
+}
+.nav-link{
+    color: yellow;
+    background: lightskyblue;
+}
+.nav{
+    background-color: lightskyblue;
+}
